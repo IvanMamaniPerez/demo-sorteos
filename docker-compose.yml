@@ -15,30 +15,30 @@ services:
         networks:
             - default
         depends_on:
-            - memcached
-            - soketi
-            - mysql
+            # - memcached
+            # - soketi
+            # - mysql
             - postgresql
-            - redis
+            # - redis
         links:
             - minio
             - mailpit
-            - meilisearch
-    mysql:
-        restart: on-failure
-        image: mysql:8
-        environment:
-            MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-secret}
-            MYSQL_DATABASE: ${DB_DATABASE:-ivanchido}
-            MYSQL_USER: ${DB_USERNAME:-ivanchido}
-            MYSQL_PASSWORD: ${DB_PASSWORD:-secret}
-            MYSQL_TCP_PORT: ${DB_PORT:-3306}
-        expose:
-            - ${DB_PORT:-3306}
-        volumes:
-            - data-mysql:/var/lib/mysql
-        networks:
-            - default
+        #     - meilisearch
+    # mysql:
+    #     restart: on-failure
+    #     image: mysql:8
+    #     environment:
+    #         MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-secret}
+    #         MYSQL_DATABASE: ${DB_DATABASE:-ivanchido}
+    #         MYSQL_USER: ${DB_USERNAME:-ivanchido}
+    #         MYSQL_PASSWORD: ${DB_PASSWORD:-secret}
+    #         MYSQL_TCP_PORT: ${DB_PORT:-3306}
+    #     expose:
+    #         - ${DB_PORT:-3306}
+    #     volumes:
+    #         - data-mysql:/var/lib/mysql
+    #     networks:
+    #         - default
     postgresql:
         restart: on-failure
         image: postgres:16
@@ -53,34 +53,34 @@ services:
             - data-postgresql:/var/lib/postgresql/data
         networks:
             - default
-    redis:
-        restart: on-failure
-        image: redis
-        volumes:
-            - data-redis:/data
-        expose:
-            - 6379
-        networks:
-            - default
-    minio:
-        restart: on-failure
-        image: minio/minio
-        expose:
-            - 9000
-        ports:
-            - ${MINIO_CONSOLE_PORT:-8900}:8900
-        environment:
-            MINIO_ROOT_USER: ${MINIO_ROOT_USER:-minio}
-            MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:-minio123}
-        volumes:
-            - data-minio:/data/minio
-        networks:
-            - default
-        command: minio server /data/minio --console-address ":${MINIO_CONSOLE_PORT:-8900}"
-        healthcheck:
-            test: ['CMD', 'curl', '-f', 'http://localhost:9000/minio/health/live']
-            retries: 3
-            timeout: 5s
+    # redis:
+    #     restart: on-failure
+    #     image: redis
+    #     volumes:
+    #         - data-redis:/data
+    #     expose:
+    #         - 6379
+    #     networks:
+    #         - default
+    # minio:
+    #     restart: on-failure
+    #     image: minio/minio
+    #     expose:
+    #         - 9000
+    #     ports:
+    #         - ${MINIO_CONSOLE_PORT:-8900}:8900
+    #     environment:
+    #         MINIO_ROOT_USER: ${MINIO_ROOT_USER:-minio}
+    #         MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:-minio123}
+    #     volumes:
+    #         - data-minio:/data/minio
+    #     networks:
+    #         - default
+    #     command: minio server /data/minio --console-address ":${MINIO_CONSOLE_PORT:-8900}"
+    #     healthcheck:
+    #         test: ['CMD', 'curl', '-f', 'http://localhost:9000/minio/health/live']
+    #         retries: 3
+    #         timeout: 5s
     mailpit:
         restart: on-failure
         image: axllent/mailpit
@@ -103,40 +103,40 @@ services:
             test: ['CMD', 'wget', '--no-verbose', '--spider', 'http://localhost:7700/health']
             retries: 3
             timeout: 5s
-    memcached:
-        restart: on-failure
-        image: memcached:alpine
-        expose:
-            - 11211
-        networks:
-            - default
-    soketi:
-        restart: on-failure
-        image: quay.io/soketi/soketi:latest-16-alpine
-        environment:
-            SOKETI_DEBUG: 1
-            SOKETI_METRICS_SERVER_PORT: ${SOKETI_METRICS_SERVER_PORT:-9601}
-        expose:
-            - 6001
-        ports:
-            - ${SOKETI_PORT:-6001}:6001
-            - ${SOKETI_METRICS_SERVER_PORT:-9601}:9601
-        networks:
-            - default
-    phpmyadmin:
-        restart: on-failure
-        image: phpmyadmin/phpmyadmin
-        environment:
-            PMA_HOST: ${DB_HOST:-mysql}
-            PMA_PORT: ${DB_PORT:-3306}
-            PMA_USER: ${DB_USERNAME:-root}
-            PMA_PASSWORD: ${DB_ROOT_PASSWORD:-secret}
-        ports:
-            - ${PHPMYADMIN_PORT:-8080}:80
-        networks:
-            - default
-        depends_on:
-            - mysql
+    # memcached:
+    #     restart: on-failure
+    #     image: memcached:alpine
+    #     expose:
+    #         - 11211
+    #     networks:
+    #         - default
+    # soketi:
+    #     restart: on-failure
+    #     image: quay.io/soketi/soketi:latest-16-alpine
+    #     environment:
+    #         SOKETI_DEBUG: 1
+    #         SOKETI_METRICS_SERVER_PORT: ${SOKETI_METRICS_SERVER_PORT:-9601}
+    #     expose:
+    #         - 6001
+    #     ports:
+    #         - ${SOKETI_PORT:-6001}:6001
+    #         - ${SOKETI_METRICS_SERVER_PORT:-9601}:9601
+    #     networks:
+    #         - default
+    # phpmyadmin:
+    #     restart: on-failure
+    #     image: phpmyadmin/phpmyadmin
+    #     environment:
+    #         PMA_HOST: ${DB_HOST:-mysql}
+    #         PMA_PORT: ${DB_PORT:-3306}
+    #         PMA_USER: ${DB_USERNAME:-root}
+    #         PMA_PASSWORD: ${DB_ROOT_PASSWORD:-secret}
+    #     ports:
+    #         - ${PHPMYADMIN_PORT:-8080}:80
+    #     networks:
+    #         - default
+    #     depends_on:
+    #         - mysql
     pgadmin:
         restart: on-failure
         image: dpage/pgadmin4
@@ -153,8 +153,8 @@ networks:
     default:
         driver: bridge
 volumes:
-    data-meilisearch:
-    data-mysql:
-    data-redis:
+    # data-meilisearch:
+    # data-mysql:
+    # data-redis:
     data-minio:
     data-postgresql:
