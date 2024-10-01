@@ -738,3 +738,61 @@
 2024-09-27 05:27:52,980 WARN received SIGTERM indicating exit request
 2024-09-27 05:27:53,038 INFO exited: npm_run_dev (exit status 0; expected)
 2024-09-27 05:27:53,039 INFO reaped unknown pid 149 (terminated by SIGTERM)
+2024-10-01 21:11:35,661 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2024-10-01 21:11:35,671 INFO supervisord started with pid 1
+2024-10-01 21:11:36,675 INFO spawned: 'npm_run_dev' with pid 7
+2024-10-01 21:11:36,679 INFO spawned: 'artisan_migrate' with pid 8
+2024-10-01 21:11:36,684 INFO spawned: 'queue_worker_email' with pid 9
+2024-10-01 21:11:36,686 INFO spawned: 'composer' with pid 10
+2024-10-01 21:11:36,689 INFO spawned: 'nginx' with pid 11
+2024-10-01 21:11:36,691 INFO spawned: 'npm_install' with pid 12
+2024-10-01 21:11:36,694 INFO spawned: 'octane' with pid 13
+2024-10-01 21:11:36,879 CRIT uncaptured python exception, closing channel <POutputDispatcher at 140415694910816 for <Subprocess at 140415694904624 with name artisan_migrate in state STARTING> (stderr)> (<class 'OSError'>:[Errno 29] Invalid seek [/usr/lib/python3.12/site-packages/supervisor/supervisord.py|runforever|218] [/usr/lib/python3.12/site-packages/supervisor/dispatchers.py|handle_read_event|276] [/usr/lib/python3.12/site-packages/supervisor/dispatchers.py|record_output|210] [/usr/lib/python3.12/site-packages/supervisor/dispatchers.py|_log|179] [/usr/lib/python3.12/site-packages/supervisor/loggers.py|info|327] [/usr/lib/python3.12/site-packages/supervisor/loggers.py|log|345] [/usr/lib/python3.12/site-packages/supervisor/loggers.py|emit|227] [/usr/lib/python3.12/site-packages/supervisor/loggers.py|doRollover|264])
+2024-10-01 21:11:36,879 INFO success: composer entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2024-10-01 21:11:36,880 INFO success: npm_install entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2024-10-01 21:11:36,881 CRIT uncaptured python exception, closing channel <POutputDispatcher at 140415694910816 for <Subprocess at 140415694904624 with name artisan_migrate in state STARTING> (stderr)> (<class 'OSError'>:[Errno 29] Invalid seek [/usr/lib/python3.12/site-packages/supervisor/supervisord.py|runforever|218] [/usr/lib/python3.12/site-packages/supervisor/dispatchers.py|handle_read_event|276] [/usr/lib/python3.12/site-packages/supervisor/dispatchers.py|record_output|210] [/usr/lib/python3.12/site-packages/supervisor/dispatchers.py|_log|179] [/usr/lib/python3.12/site-packages/supervisor/loggers.py|info|327] [/usr/lib/python3.12/site-packages/supervisor/loggers.py|log|345] [/usr/lib/python3.12/site-packages/supervisor/loggers.py|emit|227] [/usr/lib/python3.12/site-packages/supervisor/loggers.py|doRollover|264])
+2024-10-01 21:11:36,889 WARN exited: queue_worker_email (exit status 255; not expected)
+2024-10-01 21:11:36,890 WARN exited: artisan_migrate (exit status 255; not expected)
+2024-10-01 21:11:36,890 WARN exited: octane (exit status 255; not expected)
+2024-10-01 21:11:37,264 CRIT uncaptured python exception, closing channel <POutputDispatcher at 140415699337088 for <Subprocess at 140415694144816 with name npm_run_dev in state STARTING> (stderr)> (<class 'OSError'>:[Errno 29] Invalid seek [/usr/lib/python3.12/site-packages/supervisor/supervisord.py|runforever|218] [/usr/lib/python3.12/site-packages/supervisor/dispatchers.py|handle_read_event|276] [/usr/lib/python3.12/site-packages/supervisor/dispatchers.py|record_output|210] [/usr/lib/python3.12/site-packages/supervisor/dispatchers.py|_log|179] [/usr/lib/python3.12/site-packages/supervisor/loggers.py|info|327] [/usr/lib/python3.12/site-packages/supervisor/loggers.py|log|345] [/usr/lib/python3.12/site-packages/supervisor/loggers.py|emit|227] [/usr/lib/python3.12/site-packages/supervisor/loggers.py|doRollover|264])
+2024-10-01 21:11:37,279 WARN exited: npm_run_dev (exit status 127; not expected)
+2024-10-01 21:11:37,689 INFO success: nginx entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-10-01 21:11:37,896 INFO spawned: 'artisan_migrate' with pid 65
+2024-10-01 21:11:37,898 INFO spawned: 'queue_worker_email' with pid 66
+2024-10-01 21:11:37,901 INFO spawned: 'octane' with pid 67
+2024-10-01 21:11:37,931 CRIT uncaptured python exception, closing channel <POutputDispatcher at 140415694758896 for <Subprocess at 140415694904624 with name artisan_migrate in state STARTING> (stderr)> (<class 'OSError'>:[Errno 29] Invalid seek [/usr/lib/python3.12/site-packages/supervisor/supervisord.py|runforever|218] [/usr/lib/python3.12/site-packages/supervisor/dispatchers.py|handle_read_event|276] [/usr/lib/python3.12/site-packages/supervisor/dispatchers.py|record_output|210] [/usr/lib/python3.12/site-packages/supervisor/dispatchers.py|_log|179] [/usr/lib/python3.12/site-packages/supervisor/loggers.py|info|327] [/usr/lib/python3.12/site-packages/supervisor/loggers.py|log|345] [/usr/lib/python3.12/site-packages/supervisor/loggers.py|emit|227] [/usr/lib/python3.12/site-packages/supervisor/loggers.py|doRollover|264])
+2024-10-01 21:11:37,936 WARN exited: queue_worker_email (exit status 255; not expected)
+2024-10-01 21:11:37,939 WARN exited: artisan_migrate (exit status 255; not expected)
+2024-10-01 21:11:37,943 WARN exited: octane (exit status 255; not expected)
+2024-10-01 21:11:39,065 INFO spawned: 'npm_run_dev' with pid 68
+2024-10-01 21:11:39,305 CRIT uncaptured python exception, closing channel <POutputDispatcher at 140415699199776 for <Subprocess at 140415694144816 with name npm_run_dev in state STARTING> (stderr)> (<class 'OSError'>:[Errno 29] Invalid seek [/usr/lib/python3.12/site-packages/supervisor/supervisord.py|runforever|218] [/usr/lib/python3.12/site-packages/supervisor/dispatchers.py|handle_read_event|276] [/usr/lib/python3.12/site-packages/supervisor/dispatchers.py|record_output|210] [/usr/lib/python3.12/site-packages/supervisor/dispatchers.py|_log|179] [/usr/lib/python3.12/site-packages/supervisor/loggers.py|info|327] [/usr/lib/python3.12/site-packages/supervisor/loggers.py|log|345] [/usr/lib/python3.12/site-packages/supervisor/loggers.py|emit|227] [/usr/lib/python3.12/site-packages/supervisor/loggers.py|doRollover|264])
+2024-10-01 21:11:39,320 WARN exited: npm_run_dev (exit status 127; not expected)
+2024-10-01 21:11:40,688 INFO spawned: 'artisan_migrate' with pid 80
+2024-10-01 21:11:40,691 INFO spawned: 'queue_worker_email' with pid 81
+2024-10-01 21:11:40,695 INFO spawned: 'octane' with pid 82
+2024-10-01 21:11:40,774 CRIT uncaptured python exception, closing channel <POutputDispatcher at 140415704028256 for <Subprocess at 140415694904624 with name artisan_migrate in state STARTING> (stderr)> (<class 'OSError'>:[Errno 29] Invalid seek [/usr/lib/python3.12/site-packages/supervisor/supervisord.py|runforever|218] [/usr/lib/python3.12/site-packages/supervisor/dispatchers.py|handle_read_event|276] [/usr/lib/python3.12/site-packages/supervisor/dispatchers.py|record_output|210] [/usr/lib/python3.12/site-packages/supervisor/dispatchers.py|_log|179] [/usr/lib/python3.12/site-packages/supervisor/loggers.py|info|327] [/usr/lib/python3.12/site-packages/supervisor/loggers.py|log|345] [/usr/lib/python3.12/site-packages/supervisor/loggers.py|emit|227] [/usr/lib/python3.12/site-packages/supervisor/loggers.py|doRollover|264])
+2024-10-01 21:11:40,778 WARN exited: octane (exit status 255; not expected)
+2024-10-01 21:11:40,780 WARN exited: queue_worker_email (exit status 255; not expected)
+2024-10-01 21:11:40,782 WARN exited: artisan_migrate (exit status 255; not expected)
+2024-10-01 21:11:41,743 INFO spawned: 'npm_run_dev' with pid 83
+2024-10-01 21:11:42,264 CRIT uncaptured python exception, closing channel <POutputDispatcher at 140415703210208 for <Subprocess at 140415694144816 with name npm_run_dev in state STARTING> (stderr)> (<class 'OSError'>:[Errno 29] Invalid seek [/usr/lib/python3.12/site-packages/supervisor/supervisord.py|runforever|218] [/usr/lib/python3.12/site-packages/supervisor/dispatchers.py|handle_read_event|276] [/usr/lib/python3.12/site-packages/supervisor/dispatchers.py|record_output|210] [/usr/lib/python3.12/site-packages/supervisor/dispatchers.py|_log|179] [/usr/lib/python3.12/site-packages/supervisor/loggers.py|info|327] [/usr/lib/python3.12/site-packages/supervisor/loggers.py|log|345] [/usr/lib/python3.12/site-packages/supervisor/loggers.py|emit|227] [/usr/lib/python3.12/site-packages/supervisor/loggers.py|doRollover|264])
+2024-10-01 21:11:42,297 WARN exited: npm_run_dev (exit status 127; not expected)
+2024-10-01 21:11:43,890 INFO spawned: 'artisan_migrate' with pid 95
+2024-10-01 21:11:43,895 INFO spawned: 'queue_worker_email' with pid 96
+2024-10-01 21:11:43,899 INFO spawned: 'octane' with pid 97
+2024-10-01 21:11:43,965 CRIT uncaptured python exception, closing channel <POutputDispatcher at 140415694758704 for <Subprocess at 140415694904624 with name artisan_migrate in state STARTING> (stderr)> (<class 'OSError'>:[Errno 29] Invalid seek [/usr/lib/python3.12/site-packages/supervisor/supervisord.py|runforever|218] [/usr/lib/python3.12/site-packages/supervisor/dispatchers.py|handle_read_event|276] [/usr/lib/python3.12/site-packages/supervisor/dispatchers.py|record_output|210] [/usr/lib/python3.12/site-packages/supervisor/dispatchers.py|_log|179] [/usr/lib/python3.12/site-packages/supervisor/loggers.py|info|327] [/usr/lib/python3.12/site-packages/supervisor/loggers.py|log|345] [/usr/lib/python3.12/site-packages/supervisor/loggers.py|emit|227] [/usr/lib/python3.12/site-packages/supervisor/loggers.py|doRollover|264])
+2024-10-01 21:11:43,977 WARN exited: queue_worker_email (exit status 255; not expected)
+2024-10-01 21:11:43,979 WARN exited: octane (exit status 255; not expected)
+2024-10-01 21:11:43,983 WARN exited: artisan_migrate (exit status 255; not expected)
+2024-10-01 21:11:43,986 INFO gave up: artisan_migrate entered FATAL state, too many start retries too quickly
+2024-10-01 21:11:43,987 INFO gave up: queue_worker_email entered FATAL state, too many start retries too quickly
+2024-10-01 21:11:43,989 INFO gave up: octane entered FATAL state, too many start retries too quickly
+2024-10-01 21:11:46,270 INFO spawned: 'npm_run_dev' with pid 98
+2024-10-01 21:11:46,833 CRIT uncaptured python exception, closing channel <POutputDispatcher at 140415699337088 for <Subprocess at 140415694144816 with name npm_run_dev in state STARTING> (stderr)> (<class 'OSError'>:[Errno 29] Invalid seek [/usr/lib/python3.12/site-packages/supervisor/supervisord.py|runforever|218] [/usr/lib/python3.12/site-packages/supervisor/dispatchers.py|handle_read_event|276] [/usr/lib/python3.12/site-packages/supervisor/dispatchers.py|record_output|210] [/usr/lib/python3.12/site-packages/supervisor/dispatchers.py|_log|179] [/usr/lib/python3.12/site-packages/supervisor/loggers.py|info|327] [/usr/lib/python3.12/site-packages/supervisor/loggers.py|log|345] [/usr/lib/python3.12/site-packages/supervisor/loggers.py|emit|227] [/usr/lib/python3.12/site-packages/supervisor/loggers.py|doRollover|264])
+2024-10-01 21:11:46,871 WARN exited: npm_run_dev (exit status 127; not expected)
+2024-10-01 21:11:47,603 INFO gave up: npm_run_dev entered FATAL state, too many start retries too quickly
+2024-10-01 21:11:51,315 INFO exited: npm_install (exit status 0; expected)
+2024-10-01 21:15:14,502 INFO exited: composer (exit status 0; expected)
+2024-10-01 21:22:44,027 WARN received SIGTERM indicating exit request
+2024-10-01 21:22:44,028 INFO waiting for nginx to die
+2024-10-01 21:22:46,229 INFO stopped: nginx (exit status 0)
