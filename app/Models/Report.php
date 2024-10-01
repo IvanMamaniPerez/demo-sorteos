@@ -2,9 +2,12 @@
 
 namespace App\Models;
 
+use App\Enums\ReportReasonEnum;
+use App\Enums\ReportStatusEnum;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
 class Report extends Model
 {
@@ -14,7 +17,14 @@ class Report extends Model
         'reporter_id',
         'reported_id',
         'reason',
-        'description',
+        'status',
+        'reportable_type',
+        'reportable_id',
+    ];
+
+    protected $casts = [
+        'status' => ReportStatusEnum::class,
+        'reason' => ReportReasonEnum::class,
     ];
 
     /**
@@ -43,5 +53,14 @@ class Report extends Model
     public function reportable()
     {
         return $this->morphTo();
+    }
+
+    /**
+     * The files that belong to the Report
+     * @return MorphToMany<File>
+     */
+    public function files(): MorphToMany
+    {
+        return $this->morphToMany(File::class, 'fileable');
     }
 }
