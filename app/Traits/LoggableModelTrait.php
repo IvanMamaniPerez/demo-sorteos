@@ -16,13 +16,13 @@ trait LoggableModelTrait
     {
         return $this->morphMany(Log::class, 'loggable');
     }
-    
-        /**
+
+    /**
      * Suscribe el modelo al observer de logs cuando se instancia el modelo.
+     * @return void
      */
     public static function bootLoggableModelTrait()
     {
         static::observe(LoggableObserver::class);
     }
-
 }

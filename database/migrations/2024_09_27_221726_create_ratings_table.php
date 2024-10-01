@@ -12,7 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('ratings', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
+            $table->foreignUuid('rater_id')->constrained('users')->restrictOnDelete();
+            $table->foreignUuid('ratee_id')->constrained('users')->restrictOnDelete();
+            $table->integer('rating');
             $table->timestamps();
         });
     }

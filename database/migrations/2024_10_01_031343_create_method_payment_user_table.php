@@ -16,9 +16,11 @@ return new class extends Migration
             $table->foreignUuid('method_payment_id')->constrained()->restrictOnDelete();
             $table->foreignUuid('user_id')->constrained()->restrictOnDelete();
             $table->string('name');
-            $table->string('status');
+            $table->string('instructions');
             $table->string('type');
+            $table->string('status');
             $table->string('payment_data')->nullable();
+            $table->string('payment_data_extra')->nullable();
             $table->timestamps();
         });
     }

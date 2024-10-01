@@ -12,7 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('reports', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
+            $table->foreignUuid('reporter_id')->constrained('users')->restrictOnDelete();
+            $table->foreignUuid('reportee_id')->constrained('users')->restrictOnDelete();
+            $table->text('reason');
+            $table->string('status');
+            $table->uuidMorphs('reportable');
             $table->timestamps();
         });
     }
