@@ -3,13 +3,22 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use App\Enums\UserTypeRegisterEnum;
+use App\Traits\LoggableModelTrait;
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Jetstream\HasTeams;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
@@ -19,7 +28,9 @@ class User extends Authenticatable
     use HasTeams;
     use Notifiable;
     use TwoFactorAuthenticatable;
-
+    use HasRoles;
+    use HasUuids;
+    use LoggableModelTrait;
     /**
      * The attributes that are mass assignable.
      *
@@ -29,6 +40,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'type_register',
     ];
 
     /**
@@ -61,7 +73,41 @@ class User extends Authenticatable
     {
         return [
             'email_verified_at' => 'datetime',
-            'password' => 'hashed',
+            'password'          => 'hashed',
+            'type_register'     => UserTypeRegisterEnum::class,
         ];
+    }
+
+    /**
+     * Get the comments for the blog post.
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany<Comment>
+     */
+    public function comments(): HasMany
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    /**
+     * Get the profile associated with the user.
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne<Profile>
+     */
+    public function profile(): HasOne
+    {
+        return $this->hasOne(Profile::class);
+    }
+
+    /**
+     * Get the favorites for the user.
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany<Event>
+     */
+    public function events_won(): BelongsToMany
+    {
+        return $this->belongsToMany(
+            Event::class,
+            'event_prizes',
+            'user_id',
+            'event_id'
+        )
+            ->using(EventPrize::class);
     }
 }
