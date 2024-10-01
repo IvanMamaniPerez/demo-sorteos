@@ -2,6 +2,7 @@
 
 namespace App\Actions\Fortify;
 
+use App\Enums\UserTypeRegisterEnum;
 use App\Models\Team;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
@@ -32,6 +33,7 @@ class CreateNewUser implements CreatesNewUsers
             return tap(User::create([
                 'name' => $input['name'],
                 'email' => $input['email'],
+                'type_register' => UserTypeRegisterEnum::FORM,
                 'password' => Hash::make($input['password']),
             ]), function (User $user) {
                 $this->createTeam($user);
