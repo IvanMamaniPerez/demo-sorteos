@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Enums\ReportReasonEnum;
 use App\Enums\ReportStatusEnum;
+use App\Traits\CommentableModelTrait;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -11,7 +12,7 @@ use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
 class Report extends Model
 {
-    use HasFactory, HasUuids;
+    use HasFactory, HasUuids, CommentableModelTrait;
 
     protected $fillable = [
         'reporter_id',

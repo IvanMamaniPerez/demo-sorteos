@@ -1,0 +1,20 @@
+project:
+    ☐ Mantenimiento de evento: Este mantenimiento debe registrar y actualizar un evento
+    ☐ Gestion de tickets: Registro, reserva limpieza de reservados e integrar con las transacciones
+    ☐ Envio de evidencia de pago: Enviar evidencia de pago al usuario
+    ☐ Gestion de pagos: Acepta, rechaza o reporta pago de un usuario
+    ☐ Registro basico de usuario con formulario, facebook y google. 
+    ☐ Completar perfil: Solicita datos necesarios del perfil para poder completar una compra o crear un evento
+    ☐ Login, confirmacion de email y cambio de password
+    ☐ Gestion de archivos: Subir, descargar y eliminar archivos
+    ☐ Likes comentarios views shareds followers favoritos: Gestion de los mismos para eventos y usuarios segun el caso
+    ☐ Chat para transacciones: Se debe poder interactual con el vendedor de los tickets a traves del chat
+    ☐ Gestion de premios: Se debe poder gestionar los premios y agregar el valor del mismo. 
+    ☐ Venta de creditos y garantia: Modulo para hacer update del campo garantia en el evento y generar venta de creditos por parte de los usuarios "SUPER_ADMIN"
+    ☐ Visualizacion del detalle del sorteo: Se debe poder visualizar el detalle del sorteo y los premios con algunos datos en "tiempo real pollin request livewire"
+    ☐ Carrito de compras: Se debe poder agregar al carrito de compras los eventos y suscripciones
+
+    // Proximamente 
+    ☐ Modulo de suscripciones
+    
+    
