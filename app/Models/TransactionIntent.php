@@ -2,9 +2,8 @@
 
 namespace App\Models;
 
-use App\Enums\TransactionOriginEnum;
+use App\Enums\TransactionIntentStatusEnum;
 use App\Enums\TransactionReasonEnum;
-use App\Enums\TransactionStatusEnum;
 use App\Enums\TransactionTypeEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -12,7 +11,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
-class Transaction extends Model
+class TransactionIntent extends Model
 {
     use HasFactory;
 
@@ -26,15 +25,13 @@ class Transaction extends Model
         'type',
         'status',
         'amount',
-        'origin',
         'currency_code',
     ];
 
     protected $casts = [
         'reason' => TransactionReasonEnum::class,
         'type'   => TransactionTypeEnum::class,
-        'status' => TransactionStatusEnum::class,
-        'origin' => TransactionOriginEnum::class,
+        'status' => TransactionIntentStatusEnum::class,
     ];
 
     /**

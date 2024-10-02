@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('transactions', function (Blueprint $table) {
+        Schema::create('transaction_intents', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->foreignUuid('sender_id')->constrained();
             $table->foreignUuid('recipient_id')->constrained();
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('transactions');
+        Schema::dropIfExists('transaction_intents');
     }
 };

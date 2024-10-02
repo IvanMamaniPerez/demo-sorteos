@@ -2,8 +2,8 @@
 
 namespace App\Traits;
 
+use App\Exceptions\PolymorphicValidationException;
 use App\Models\Like;
-use App\Models\User;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 trait LikeableModelTrait
@@ -19,17 +19,22 @@ trait LikeableModelTrait
 
     /**
      *  Add a like to the model.
-     * @param User $user
+     * @param Like $like
      * */
-    public function addLike(User $user)
+    public function addLike(Like $like)
     {
-        $this->likes()->create([
-            'user_id' => $user->id
-        ]);
+        if ($like->exists) {
+            throw new PolymorphicValidationException("The like for assing with LikeableModelTrait must not be in database");
+        }
+        $this->likes()->save($like);
     }
 
-    public function removeLike(User $user)
+    /**
+     * Remove a like from the model.
+     * @param Like $like
+     */
+    public function removeLike(Like $like)
     {
-        $this->likes()->where('user_id', $user->id)->delete();
+        $this->likes()->detach($like->id);
     }
 }

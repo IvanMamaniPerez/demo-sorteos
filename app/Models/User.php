@@ -114,10 +114,20 @@ class User extends Authenticatable
      * Get the transactions for the user.
      * @return \Illuminate\Database\Eloquent\Relations\HasMany<Transaction>
      */
-    public function transactions(): HasMany
+    public function transactions_as_sender(): HasMany
     {
-        return $this->hasMany(Transaction::class);
+        return $this->hasMany(Transaction::class, 'sender_id');
     }
+
+    /**
+     * Get the transactions for the user.
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany<Transaction>
+     */
+    public function transactions_as_recipient(): HasMany
+    {
+        return $this->hasMany(Transaction::class, 'recipient_id');
+    }
+
 
     /**
      * Get the tickets for the user.
@@ -155,4 +165,6 @@ class User extends Authenticatable
     {
         return $this->hasMany(Sell::class);
     }
+
+
 }
