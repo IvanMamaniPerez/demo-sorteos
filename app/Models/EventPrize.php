@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Relations\Pivot;
 
 class EventPrize extends Pivot
 {
-    //
     use HasUuids;
 
     protected $fillable = [
@@ -26,7 +25,7 @@ class EventPrize extends Pivot
         'quantity' => 'integer',
     ];
 
-    /** 
+    /**
      * Get the event that owns the event prize.
      * @return BelongsTo<Event>
      */

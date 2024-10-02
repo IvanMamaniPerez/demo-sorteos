@@ -6,6 +6,7 @@ namespace App\Models;
 
 use App\Enums\UserTypeRegisterEnum;
 use App\Traits\LoggableModelTrait;
+use App\Traits\ViewableModelTrait;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -30,6 +31,8 @@ class User extends Authenticatable
     use HasRoles;
     use HasUuids;
     use LoggableModelTrait;
+    use ViewableModelTrait;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -156,7 +159,6 @@ class User extends Authenticatable
         return $this->hasMany(Order::class, 'seller_id');
     }
 
-
     /**
      * Get the sells for the user.
      * @return \Illuminate\Database\Eloquent\Relations\HasMany<Sell>
@@ -166,5 +168,32 @@ class User extends Authenticatable
         return $this->hasMany(Sell::class);
     }
 
+    /**
+     * Get all followers.
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany<User>
+     */
+    public function followers(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class, 'followers', 'followee_id', 'follower_id')
+            ->using(Follower::class);
+    }
 
+    /**
+     * Get all followees.
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany<User>
+     */
+    public function followees(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class, 'followers', 'follower_id', 'followee_id');
+    }
+
+    public function methodPayments()
+    {
+        return $this->hasMany(MethodPayment::class);
+    }
+
+    public function newsletter(): HasOne
+    {
+        return $this->hasOne(NewsletterSubscriber::class, 'email', 'email');
+    }
 }

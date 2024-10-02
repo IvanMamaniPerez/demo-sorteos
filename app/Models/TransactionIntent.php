@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Enums\TransactionIntentStatusEnum;
 use App\Enums\TransactionReasonEnum;
 use App\Enums\TransactionTypeEnum;
+use App\Traits\LoggableModelTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -13,7 +14,7 @@ use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
 class TransactionIntent extends Model
 {
-    use HasFactory;
+    use HasFactory, LoggableModelTrait;
 
     protected $fillable = [
         'id',
@@ -78,4 +79,6 @@ class TransactionIntent extends Model
     {
         return $this->morphToMany(File::class, 'fileable');
     }
+
+
 }

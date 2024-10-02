@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use App\Enums\TicketStatusEnum;
+use App\Traits\LoggableModelTrait;
+use App\Traits\ViewableModelTrait;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -10,7 +12,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Ticket extends Model
 {
-    use HasFactory, HasUuids;
+    use HasFactory, HasUuids, LoggableModelTrait, ViewableModelTrait;
 
     protected $fillable = [
         'id',
@@ -41,6 +43,14 @@ class Ticket extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function prizes()
+    {
+        return $this->belongsToMany(Prize::class, 'event_prizes', 'ticket_id', 'prize_id')
+            ->withPivot('position', 'status', 'quantity')
+            ->orderBy('position')
+            ->using(EventPrize::class);
     }
 
 }

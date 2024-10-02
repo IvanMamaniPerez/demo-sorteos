@@ -11,15 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tickets', function (Blueprint $table) {
+        Schema::create('newsletter_subscribers', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->foreignUuid('event_id')->constrained()->restrictOnDelete();
-            $table->string('number');
-            $table->foreignUuid('user_id')->constrained()->restrictOnDelete();
-            $table->timestamp('purchased_at')->nullable();
+            $table->string('email')->unique();
+            $table->timestamp('subscribed_at');
+            $table->timestamp('unsubscribed_at')->nullable();
+            $table->timestamp('last_sent_at')->nullable();
             $table->string('status');
             $table->timestamps();
-            $table->unique(['event_id', 'number']);
         });
     }
 
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tickets');
+        Schema::dropIfExists('newsletter_subscribers');
     }
 };

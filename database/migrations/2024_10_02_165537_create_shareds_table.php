@@ -11,18 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('profiles', function (Blueprint $table) {
+        Schema::create('shareds', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('first_name');
-            $table->string('last_name');
             $table->foreignUuid('user_id')->constrained()->cascadeOnDelete();
-            $table->text('description');
-            $table->string('timezone_current');
-            $table->string('country_current');
-            $table->string('currency_current');
-            $table->string('locale');
-            $table->decimal('credits', 20, 2);
-            $table->string('whatsapp')->nullable();
+            $table->uuidMorphs('sharedable');
             $table->timestamps();
         });
     }
@@ -32,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('profiles');
+        Schema::dropIfExists('shareds');
     }
 };

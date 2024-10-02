@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->foreignUuid('sender_id')->constrained();
-            $table->foreignUuid('recipient_id')->constrained();
+            $table->foreignUuid('sender_id')->constrained('users');
+            $table->foreignUuid('recipient_id')->constrained('users');
             $table->foreignUuid('method_payment_id')->constrained();
             $table->uuidMorphs('transactionable');
             $table->string('reason');
