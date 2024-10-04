@@ -21,8 +21,9 @@ class SubscribeNewsletter extends Component
      */
     public function subscribe()
     {
+        dd('en metodo');
         $this->validate();
-        // Add your logic here
+        //dd('en metodo');
     }
     public function render()
     {
