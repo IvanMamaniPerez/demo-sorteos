@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('profiles', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->string('first_name');
+            $table->string('last_name');
             $table->foreignUuid('user_id')->constrained()->cascadeOnDelete();
             $table->text('description');
             $table->string('timezone_current');

@@ -29,7 +29,7 @@ class Comment extends Model
         return $this->belongsTo(User::class);
     }
 
-    /** 
+    /**
      * Get all of the owning commentable models.
      * @return \Illuminate\Database\Eloquent\Relations\MorphTo
      */

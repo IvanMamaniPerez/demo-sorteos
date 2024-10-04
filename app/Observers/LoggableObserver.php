@@ -6,7 +6,6 @@ use App\Enums\LogActionEnum;
 
 class LoggableObserver
 {
-
     public function created($model)
     {
 

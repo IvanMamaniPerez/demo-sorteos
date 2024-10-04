@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignUuid('event_id')->constrained()->restrictOnDelete();
             $table->string('number');
             $table->foreignUuid('user_id')->constrained()->restrictOnDelete();
-            $table->timestamp('purchased_at');
+            $table->timestamp('purchased_at')->nullable();
             $table->string('status');
             $table->timestamps();
             $table->unique(['event_id', 'number']);

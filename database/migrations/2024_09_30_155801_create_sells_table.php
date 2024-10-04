@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('sells', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->foreignUuid('order_id')->constrained();
+            $table->foreignUuid('user_id')->constrained();
             $table->string('series', 3);
             $table->string('sequence', 8);
             $table->string('type_document');

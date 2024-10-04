@@ -7,6 +7,7 @@ use App\Enums\EventStatusEnum;
 use App\Enums\EventTypeParticipantEnum;
 use App\Enums\FileTypeEnum;
 use App\Enums\EventTypeExecuteEnum;
+use App\Traits\CommentableModelTrait;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Collection;
@@ -24,7 +25,7 @@ use Illuminate\Support\Facades\DB;
 
 class Event extends Model
 {
-    use HasFactory, HasUuids, SoftDeletes;
+    use HasFactory, HasUuids, SoftDeletes, CommentableModelTrait;
 
     protected $fillable = [
         'name',
@@ -56,6 +57,15 @@ class Event extends Model
     ];
 
     /**
+     * Get the user that owns the event.
+     * @return BelongsTo<User>
+     */
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'id', 'user_id');
+    }
+
+    /**
      * Get the team that owns the event.
      * @return HasOne<File>
      */
@@ -73,6 +83,15 @@ class Event extends Model
     {
         return $this->morphToMany(File::class, 'fileable')
             ->where('type', FileTypeEnum::IMAGE);
+    }
+
+    /**
+     * Get the files associated with the event.
+     * @return MorphToMany<File>
+     */
+    public function files(): MorphToMany
+    {
+        return $this->morphToMany(File::class, 'fileable');
     }
 
     /**
@@ -103,17 +122,6 @@ class Event extends Model
         return $this->morphToMany(File::class, 'fileable')
             ->where('type', FileTypeEnum::DOCUMENT);
     }
-
-    /**
-     * Get all of the comments for the event.
-     * @return MorphMany<Comment>
-     */
-    public function comments(): MorphMany
-    {
-        return $this->morphMany(Comment::class, 'commentable');
-    }
-
-
 
     /**
      * Get all of the favorites for the event.
@@ -185,14 +193,5 @@ class Event extends Model
             ->select('users.id', 'users.name', DB::raw('COUNT(tickets.id) as tickets_count'))
             ->groupBy('users.id', 'users.name')  // Agrupamos por todas las columnas no agregadas
             ->get();
-    }
-
-    /**
-     * Get the user that owns the event.
-     * @return BelongsTo<User>
-     */
-    public function user(): BelongsTo
-    {
-        return $this->belongsTo(User::class, 'id', 'user_id');
     }
 }

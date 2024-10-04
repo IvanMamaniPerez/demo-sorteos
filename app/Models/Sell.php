@@ -16,6 +16,7 @@ class Sell extends Model
 
     protected $fillable = [
         'order_id',
+        'user_id',
         'series',
         'sequence',
         'type_document',

@@ -2,8 +2,10 @@
 
 namespace App\Enums;
 
-enum TicketStatusEnum : string
+enum TicketStatusEnum: string
 {
-    case ACTIVE = 'active';
-    case ANULED = 'anuled';
+    case PURCHARSED = 'purcharsed';
+    case IN_CART    = 'in_cart';
+    case RESERVED   = 'reserved';
+    case ANULED     = 'anuled';
 }

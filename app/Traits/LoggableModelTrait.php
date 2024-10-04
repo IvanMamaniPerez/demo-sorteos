@@ -18,7 +18,7 @@ trait LoggableModelTrait
     }
 
     /**
-     * Suscribe el modelo al observer de logs cuando se instancia el modelo.
+     * Susbcribe the model to LoggableObserver.
      * @return void
      */
     public static function bootLoggableModelTrait()
