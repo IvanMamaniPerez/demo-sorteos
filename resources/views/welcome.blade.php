@@ -1,8 +1,7 @@
 <x-shared.layouts.user-layout>
-    <div class="grid grid-cols-3 gap-4">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         @for ($i = 0; $i < 9; $i++)
-            <div role="status"
-                class="max-w-sm p-4 border border-gray-200 rounded shadow animate-pulse md:p-6 dark:border-gray-700">
+            <div class="p-4 border border-gray-200 rounded shadow animate-pulse md:p-6 dark:border-gray-700">
                 <div class="flex items-center justify-center h-48 mb-4 bg-gray-300 rounded dark:bg-gray-700">
                     <svg class="w-10 h-10 text-gray-200 dark:text-gray-600" aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 20">

@@ -18,7 +18,7 @@
     <!-- Styles -->
     @livewireStyles
     @wireUiScripts
-    {{-- <script src="//unpkg.com/alpinejs"></script> --}}
+    {{-- <script src="//unpkg.com/alpine-js"></script> --}}
 </head>
 
 <body class="font-sans antialiased">
@@ -28,7 +28,7 @@
         <main class="container-full max-w-7xl mx-auto">
             {{ $slot }}
         </main>
-        @unless (auth()?->user()->newsletter)
+        @unless (auth()?->user()?->newsletter)
             <livewire:shared.subscribe-newsletter />
         @endunless
         {{-- <x-shared.footer /> --}}

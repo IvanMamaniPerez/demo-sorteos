@@ -7,6 +7,7 @@ use Livewire\Component;
 class SubscribeNewsletter extends Component
 {
     public string $email = '';
+    public bool $show = true;
 
     public function rules()
     {

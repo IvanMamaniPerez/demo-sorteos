@@ -1,4 +1,4 @@
-<nav class="bg-white border-gray-200 dark:bg-gray-900">
+<nav class="bg-white border-gray-200">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto pb-0 lg:pb-4 p-4">
         <div class="flex gap-2">
             <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
@@ -38,14 +38,14 @@
                 <x-shared.user-dropdown :user="auth()->user()" />
             @else
                 <x-button amber label="Registrarme"
-                    class="text-slate-950 font-bold border-slate-950 border-2 hover:text-slate-950" />
+                    class="!text-slate-950 !font-bold border-slate-950 border-2 hover:text-slate-950" />
                 <x-button flat black label="Iniciar sesión" class="underline font-bold" />
             @endif
         </div>
 
         <div class="flex md:hidden md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse gap-2 ">
             <x-button amber label="Iniciar sesión"
-                class="text-slate-950 font-bold border-slate-950 border-2 hover:text-slate-950" />
+                class="!text-slate-950 !font-bold border-slate-950 border-2 hover:text-slate-950" />
         </div>
 
         <div class="items-center justify-between order-3 w-full lg:flex lg:w-auto lg:order-1">
@@ -53,7 +53,7 @@
                 class="flex flex-row justify-center font-medium p-2 m-0 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse border-0 bg-white ">
                 <li>
                     <a href="#"
-                        class="block py-2 px-3 p-0 text-white font-bold rounded md:bg-transparent text-blue-700 flex gap-1"
+                        class="block py-2 px-3 p-0 font-bold rounded md:bg-transparent text-blue-700 flex gap-1"
                         aria-current="page"> <x-icon name="home" class="w-5 h-5" /> Inicio</a>
                 </li>
                 <li>
