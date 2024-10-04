@@ -19,4 +19,7 @@ yarn-error.log
 /.idea
 /.vscode
 /.zed
-*.log
+.log
+docker-compose.yml
+Dockerfile
+vite.config.js
