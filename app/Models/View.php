@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\ViewOriginEnum;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -19,13 +20,18 @@ class View extends Model
         'ip',
         'user_agent',
         'country_code',
+        'origin'
+    ];
+
+    protected $casts = [
+        'origin' => ViewOriginEnum::class
     ];
 
     /**
      * Get all of the owning viewable models.
      * @return \Illuminate\Database\Eloquent\Relations\MorphTo
      */
-    public function viewable() : MorphTo
+    public function viewable(): MorphTo
     {
         return $this->morphTo();
     }
@@ -34,7 +40,7 @@ class View extends Model
      * Get the user that owns the View
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<User>
      */
-    public function user() : BelongsTo
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
@@ -43,7 +49,7 @@ class View extends Model
      * Get the country that owns the View
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<Country>
      */
-    public function country() : BelongsTo
+    public function country(): BelongsTo
     {
         return $this->belongsTo(Country::class, 'country_code', 'code');
     }

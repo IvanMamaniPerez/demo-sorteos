@@ -2,21 +2,20 @@
 
 namespace App\View\Components\shared\layouts;
 
+use App\Enums\ContainerComponentEnum;
 use App\Models\User;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
-use Illuminate\Support\Facades\Auth;
+
 class UserLayout extends Component
 {
-    
+
     /**
      * Create a new component instance.
+     * @param ContainerComponentEnum $componentContainer
      */
-    public function __construct()
-    {
-        
-    }
+    public function __construct(public ContainerComponentEnum $componentContainer) {}
 
     /**
      * Get the view / contents that represent the component.

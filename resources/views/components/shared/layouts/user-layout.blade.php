@@ -22,13 +22,28 @@
 </head>
 
 <body class="font-sans antialiased">
-    <div class="min-h-screen bg-gray-100">
+    <div class="max-h-screen bg-gray-100">
         <x-shared.navbar />
-        <!-- Page Content -->
-        <main class="container-full max-w-7xl mx-auto">
-            {{ $slot }}
+
+        <main class="container-full grid grid-cols-1 lg:grid-cols-11 pt-20" >
+            <div class="hidden lg:block  col-span-2 h-full">
+                <x-shared.navigations.sidebar />
+            </div>
+            @if ($componentContainer == 'single-page')
+                <div class="col-span-7">
+                    {{ $slot }}
+                </div>
+            @elseif ($componentContainer == 'home')
+                <div class="col-span-6">
+                    {{ $slot }}
+                </div>
+                <div class="col-span-3 p-2">
+                    <livewire:shared.events-guaranteed />
+                </div>
+            @endif
         </main>
-        @unless (auth()?->user()?->newsletter)
+
+        @unless (!auth()?->user()?->newsletter)
             <livewire:shared.subscribe-newsletter />
         @endunless
         {{-- <x-shared.footer /> --}}

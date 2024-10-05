@@ -197,3 +197,4 @@ class User extends Authenticatable
         return $this->hasOne(NewsletterSubscriber::class, 'email', 'email');
     }
 }
+    

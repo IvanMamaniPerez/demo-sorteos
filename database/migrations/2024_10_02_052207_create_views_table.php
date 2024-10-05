@@ -17,7 +17,8 @@ return new class extends Migration
             $table->uuidMorphs('viewable');
             $table->string('ip');
             $table->string('user_agent');
-            $table->string('country_code');
+            $table->string('country_code', 3);
+            $table->string('origin', 20);
             $table->timestamps();
         });
     }
