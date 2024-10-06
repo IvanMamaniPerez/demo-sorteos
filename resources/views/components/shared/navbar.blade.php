@@ -26,7 +26,7 @@
 
                 <x-shared.user-dropdown :user="auth()->user()" />
             @else
-                <x-button amber label="Registrarme"
+                <x-button amber label="Registrarme" x-on:click="$openModal('registerFormModal')"
                     class="!text-slate-950 !font-bold border-slate-950 border-2 hover:text-slate-950" />
                 <x-button flat black label="Iniciar sesión" class="underline font-bold" />
             @endif
@@ -63,4 +63,12 @@
             </ul>
         </div>
     </div>
+    <x-modal-card persistent align="center" name="registerFormModal">
+
+        <h1 class="text-2xl text-center">
+            Bienvenido a Cuy Dorado
+        </h1>
+
+        <livewire:auth.register-form>
+    </x-modal-card>
 </nav>
