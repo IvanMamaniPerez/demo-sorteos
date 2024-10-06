@@ -7,6 +7,7 @@ namespace App\Models;
 use App\Enums\UserTypeRegisterEnum;
 use App\Traits\LoggableModelTrait;
 use App\Traits\ViewableModelTrait;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -14,6 +15,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Str;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Jetstream\HasTeams;
@@ -43,6 +45,7 @@ class User extends Authenticatable
         'email',
         'password',
         'type_register',
+        'acepted_terms',
     ];
 
     /**
@@ -80,6 +83,30 @@ class User extends Authenticatable
         ];
     }
 
+    /**
+     * Get the name attribute set as lowercase.
+     * @return \Illuminate\Database\Eloquent\Casts\Attribute
+     */
+    protected function name(): Attribute
+    {
+        return Attribute::make(
+            get: fn($value) => Str::lower($value),
+            set: fn($value) => Str::lower($value)
+        );
+    }
+
+        /**
+     * Get the name attribute set as lowercase.
+     * @return \Illuminate\Database\Eloquent\Casts\Attribute
+     */
+    protected function email(): Attribute
+    {
+        return Attribute::make(
+            get: fn($value) => Str::lower($value),
+            set: fn($value) => Str::lower($value)
+        );
+    }
+    
     /**
      * Get the comments for the blog post.
      * @return \Illuminate\Database\Eloquent\Relations\HasMany<Comment>
@@ -197,4 +224,3 @@ class User extends Authenticatable
         return $this->hasOne(NewsletterSubscriber::class, 'email', 'email');
     }
 }
-    

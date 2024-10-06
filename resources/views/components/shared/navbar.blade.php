@@ -17,13 +17,7 @@
 
                 <x-button amber label="Crear evento"
                     class="text-slate-950 font-bold border-slate-950 border-2 hover:text-slate-950" />
-                <x-mini-button black flat rounded>
-                    <x-icon name="shopping-cart" class="w-5 h-5" />
-                </x-mini-button>
-                <x-mini-button black flat rounded>
-                    <x-icon name="bell" class="w-5 h-5" />
-                </x-mini-button>
-
+                
                 <x-shared.user-dropdown :user="auth()->user()" />
             @else
                 <x-button amber label="Registrarme" x-on:click="$openModal('registerFormModal')"
@@ -64,11 +58,6 @@
         </div>
     </div>
     <x-modal-card persistent align="center" name="registerFormModal">
-
-        <h1 class="text-2xl text-center">
-            Bienvenido a Cuy Dorado
-        </h1>
-
         <livewire:auth.register-form>
     </x-modal-card>
 </nav>

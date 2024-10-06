@@ -22,6 +22,7 @@
 </head>
 
 <body class="font-sans antialiased relative">
+    <x-notifications />
     <div class="max-h-screen bg-gray-100">
         <x-shared.navbar />
 
