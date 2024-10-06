@@ -21,23 +21,25 @@
     {{-- <script src="//unpkg.com/alpine-js"></script> --}}
 </head>
 
-<body class="font-sans antialiased">
+<body class="font-sans antialiased relative">
     <div class="max-h-screen bg-gray-100">
         <x-shared.navbar />
 
-        <main class="container-full grid grid-cols-1 lg:grid-cols-11 pt-20" >
-            <div class="hidden lg:block  col-span-2 h-full">
-                <x-shared.navigations.sidebar />
-            </div>
+        <main class="container-full">
+            <x-shared.navigations.sidebar />
             @if ($componentContainer == 'single-page')
-                <div class="col-span-7">
-                    {{ $slot }}
+                <div class="lg:ps-64 2xl:ps-72 lg:pt-24">
+                    <div class="container-full px-4">
+                        {{ $slot }}
+                    </div>
                 </div>
             @elseif ($componentContainer == 'home')
-                <div class="col-span-6">
-                    {{ $slot }}
+                <div class="lg:ps-64 2xl:ps-72 lg:pt-24 p-2 lg:pe-64 2xl:pe-96">
+                    <div class="container-full px-4">
+                        {{ $slot }}
+                    </div>
                 </div>
-                <div class="col-span-3 p-2">
+                <div class="hidden lg:block fixed top-0 right-0 h-screen bg-white lg:w-64 2xl:w-96 pt-24">
                     <livewire:shared.events-guaranteed />
                 </div>
             @endif

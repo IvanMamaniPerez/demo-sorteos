@@ -1,4 +1,4 @@
-<nav class="fixed top-0 w-full z-50 bg-white border-gray-200">
+<nav class="block lg:fixed top-0 w-full z-50 bg-white border-gray-200" x-data="">
     <div class="flex flex-wrap items-center justify-between mx-auto pb-0 lg:pb-4 p-4">
         <div class="flex gap-2">
             <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
