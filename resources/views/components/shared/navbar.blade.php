@@ -1,6 +1,6 @@
 <nav class="block lg:fixed top-0 w-full z-50 bg-white border-gray-200" x-data="">
-    <div class="flex flex-wrap items-center justify-between mx-auto pb-0 lg:pb-4 p-4">
-        <div class="flex gap-2">
+    <div class="grid grid-cols-7 p-4 pb-0 lg:pb-4">
+        <div class="flex gap-2 col-span-4 lg:col-span-2">
             <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
                 <div class="bg-black rounded-lg p-1.5">
                     <img src="/logo.png" class="h-8" alt="Cuy Dorado Logo" />
@@ -9,9 +9,12 @@
                     Dorado</span>
             </a>
         </div>
-        <div class="hidden md:flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse gap-2  ">
+        <div
+            class="hidden md:flex justify-end md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse gap-2 col-span-3 lg:col-span-2 py-2">
             @if (auth()->check())
                 {{-- Validar authentication para mostrar los iconos --}}
+
+
                 <x-button amber label="Crear evento"
                     class="text-slate-950 font-bold border-slate-950 border-2 hover:text-slate-950" />
                 <x-mini-button black flat rounded>
@@ -29,12 +32,13 @@
             @endif
         </div>
 
-        <div class="flex md:hidden md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse gap-2 ">
+        <div
+            class="flex justify-end md:hidden md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse gap-2 col-span-3 lg:col-span-2">
             <x-button amber label="Iniciar sesión"
                 class="!text-slate-950 !font-bold border-slate-950 border-2 hover:text-slate-950" />
-        </div>
 
-        <div class="items-center justify-between order-3 w-full lg:flex lg:w-auto lg:order-1">
+        </div>
+        <div class="items-center justify-center order-3 w-full lg:flex lg:w-auto lg:order-1 col-span-7 lg:col-span-3">
             <ul
                 class="flex flex-row justify-around lg:justify-center font-medium p-2 m-0 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse border-0 bg-white ">
                 <li>
