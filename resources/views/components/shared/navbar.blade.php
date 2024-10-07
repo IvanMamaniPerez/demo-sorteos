@@ -1,4 +1,13 @@
-<nav class="block lg:fixed top-0 w-full z-50 bg-white border-gray-200" x-data="">
+<nav class="block lg:fixed top-0 w-full z-50 bg-white border-gray-200" x-data="{
+    openAuthModalRegisterForm() {
+            $dispatch('ModalAuthForm.showRegisterForm');
+            $openModal('registerFormModal');
+        },
+        openAuthModalLoginForm() {
+            $dispatch('ModalAuthForm.showLoginForm');
+            $openModal('registerFormModal');
+        }
+}">
     <div class="grid grid-cols-7 p-4 pb-0 lg:pb-4">
         <div class="flex gap-2 col-span-4 lg:col-span-2">
             <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
@@ -9,33 +18,32 @@
                     Dorado</span>
             </a>
         </div>
+
+        {{-- This show after md size screen --}}
         <div
             class="hidden md:flex justify-end md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse gap-2 col-span-3 lg:col-span-2 py-2">
             @if (auth()->check())
-                {{-- Validar authentication para mostrar los iconos --}}
-
-
                 <x-button amber label="Crear evento"
                     class="text-slate-950 font-bold border-slate-950 border-2 hover:text-slate-950" />
-                <x-mini-button black flat rounded>
-                    <x-icon name="shopping-cart" class="w-5 h-5" />
-                </x-mini-button>
-                <x-mini-button black flat rounded>
-                    <x-icon name="bell" class="w-5 h-5" />
-                </x-mini-button>
 
                 <x-shared.user-dropdown :user="auth()->user()" />
             @else
-                <x-button amber label="Registrarme" x-on:click="$openModal('registerFormModal')"
+                <x-button amber label="Registrarme" x-on:click="openAuthModalRegisterForm()"
                     class="!text-slate-950 !font-bold border-slate-950 border-2 hover:text-slate-950" />
-                <x-button flat black label="Iniciar sesión" class="underline font-bold" />
+                <x-button flat black label="Iniciar sesión" x-on:click="openAuthModalLoginForm()"
+                    class="underline font-bold" />
             @endif
         </div>
 
+        {{-- this is before md size screen --}}
         <div
             class="flex justify-end md:hidden md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse gap-2 col-span-3 lg:col-span-2">
-            <x-button amber label="Iniciar sesión"
-                class="!text-slate-950 !font-bold border-slate-950 border-2 hover:text-slate-950" />
+            @if (auth()->check())
+                <x-shared.user-dropdown :user="auth()->user()" />
+            @else
+                <x-button amber label="Iniciar sesión" x-on:click="openAuthModalLoginForm()"
+                    class="!text-slate-950 !font-bold border-slate-950 border-2 hover:text-slate-950" />
+            @endif
 
         </div>
         <div class="items-center justify-center order-3 w-full lg:flex lg:w-auto lg:order-1 col-span-7 lg:col-span-3">
@@ -63,12 +71,5 @@
             </ul>
         </div>
     </div>
-    <x-modal-card persistent align="center" name="registerFormModal">
-
-        <h1 class="text-2xl text-center">
-            Bienvenido a Cuy Dorado
-        </h1>
-
-        <livewire:auth.register-form>
-    </x-modal-card>
+    <livewire:auth.modal-auth-form />
 </nav>

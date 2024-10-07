@@ -1,5 +1,5 @@
 <x-shared.layouts.user-layout :componentContainer="'home'" >
-    <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
+    <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3  gap-4">
         @for ($i = 0; $i < 20; $i++)
             <div class="p-4 border border-gray-200 rounded shadow animate-pulse md:p-6 dark:border-gray-700">
                 <div class="flex items-center justify-center h-48 mb-4 bg-gray-300 rounded dark:bg-gray-700">

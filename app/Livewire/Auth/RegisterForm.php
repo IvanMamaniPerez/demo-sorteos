@@ -2,28 +2,68 @@
 
 namespace App\Livewire\Auth;
 
-use App\Actions\Fortify\CreateNewUser;
+use App\Actions\Auth\CreateNewUser;
 use App\Enums\UserTypeRegisterEnum;
+use Illuminate\Support\Facades\Auth;
+use Livewire\Attributes\Validate;
 use Livewire\Component;
-use WireUi\Traits\WireUiActions;
 
 class RegisterForm extends Component
 {
-    use WireUiActions;
+    #[Validate]
     public $name;
-    public $email;
-    public $password;
-    public $passwordConfirmation;
 
+    #[Validate]
+    public $email;
+
+    #[Validate]
+    public $password;
+    public $password_confirmation;
+    public $terms;
+    public $privacy_policy;
+
+    /**
+     * Validation rules
+     */
     public function rules()
     {
         return [
-            'name'                 => 'required|string|min:4|unique:users',
-            'email'                => 'required|email|unique:users',
-            'password'             => 'required|string|min:8',
-            'passwordConfirmation' => 'required_with:password|same:password|min:8'
+            'name'                  => ['required', 'lowercase', 'string', 'min:4', 'unique:users',  'regex:/^[a-zA-Z0-9._]+$/'],
+            'email'                 => 'required|lowercase|email|unique:users',
+            'password'              => 'required|string|min:8',
+            'password_confirmation' => 'required_with:password|same:password',
+            'terms'                 => 'required|accepted',
+            'privacy_policy'        => 'required|accepted'
         ];
     }
+
+    /**
+     * Custom error messages
+     */
+    public function messages()
+    {
+        return [
+            'name.required'                  => 'El nombre es requerido.',
+            'name.lowercase'                 => 'El nombre debe estar en minúsculas.',
+            'name.min'                       => 'El nombre debe tener al menos 4 caracteres.',
+            'name.unique'                    => 'El nombre ya está en uso.',
+            'name.regex'                     => 'El nombre solo puede contener letras, números, puntos y guiones bajos.',
+            'email.required'                 => 'El email es requerido.',
+            'email.lowercase'                => 'El email debe estar en minúsculas.',
+            'email.email'                    => 'Debe ser un email válido.',
+            'email.unique'                   => 'El email ya está en uso.',
+            'password.required'              => 'La contraseña es requerida.',
+            'password.string'                => 'La contraseña debe ser una cadena de texto.',
+            'password.min'                   => 'La contraseña debe tener al menos 8 caracteres.',
+            'password_confirmation.required' => 'La contraseña de confirmación es requerido.',
+            'password_confirmation.same'     => 'La contraseña de confirmación debe ser igual al password.',
+            'terms.required'                 => 'Debes aceptar los términos y condiciones.',
+            'terms.accepted'                 => 'Debes aceptar los términos y condiciones.',
+            'privacy_policy.required'        => 'Debes aceptar la política de privacidad.',
+            'privacy_policy.accepted'        => 'Debes aceptar la política de privacidad.',
+        ];
+    }
+
 
     /**
      * Save the user in the database and send a notification
@@ -31,22 +71,22 @@ class RegisterForm extends Component
     public function save()
     {
         $this->validate();
-        $imput = [
+        $input = [
             'name'                  => $this->name,
             'email'                 => $this->email,
             'password'              => $this->password,
-            'password_confirmation' => $this->passwordConfirmation,
-            'type_register'         => UserTypeRegisterEnum::FORM,
+            'password_confirmation' => $this->password_confirmation,
+            'type_register'         => UserTypeRegisterEnum::FORM->value,
+            'terms'                 => $this->terms == 'on',
+            'policy'               => $this->privacy_policy == 'on',
         ];
 
-        dd('paso validation');
-        (new CreateNewUser())->create($imput);
+        $user = (new CreateNewUser)->create($input);
 
-        $this->notification()->send([
-            'icon'        => 'success',
-            'title'       => 'Registro exitoso!',
-            'description' => "Bienvenido! @$this->name",
-        ]);
+        Auth::login($user);
+
+        $this->redirect('/');
+
     }
 
     public function render()
