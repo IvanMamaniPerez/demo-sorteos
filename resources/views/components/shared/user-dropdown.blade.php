@@ -13,7 +13,7 @@
                 alt="">
         </button>
     </div>
-
+    
     <div x-show="open" x-transition:enter="transition ease-out duration-100"
         x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100"
         x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100"
@@ -22,21 +22,20 @@
         role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
         <!-- Active: "bg-gray-100", Not Active: "" -->
         <div class="divide-y divide-gray-800 block px-4 py-2 text-sm text-gray-700">
-            {{ $user->name }}
+            {{ "@".$user->name }}
         </div>
+         <hr>
         <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
-            id="user-menu-item-0">Your Profile</a>
+            id="user-menu-item-0">Perfil</a>
         <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
-            id="user-menu-item-1">Settings</a>
-        <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
-            id="user-menu-item-2">Sign out</a>
+            id="user-menu-item-1">Configuraciones</a>
         {{-- Agregar opcion de logout --}}
         <form method="POST" action="{{ route('logout') }}">
             @csrf
             <a href="{{ route('logout') }}" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
                 id="user-menu-item-2"
                 onclick="event.preventDefault();
-                this.closest('form').submit();">Sign out</a>
+                this.closest('form').submit();">Cerrar sesión</a>
         </form>
 
     </div>

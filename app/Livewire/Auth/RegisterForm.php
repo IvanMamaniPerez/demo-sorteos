@@ -7,20 +7,20 @@ use App\Enums\UserTypeRegisterEnum;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
-use WireUi\Traits\WireUiActions;
 
 class RegisterForm extends Component
 {
-    use WireUiActions;
-
     #[Validate]
     public $name;
 
     #[Validate]
     public $email;
 
+    #[Validate]
     public $password;
     public $password_confirmation;
+    public $terms;
+    public $privacy_policy;
 
     /**
      * Validation rules
@@ -28,10 +28,12 @@ class RegisterForm extends Component
     public function rules()
     {
         return [
-            'name'                  => ['required','lowercase','string','min:4','unique:users',  'regex:/^[a-zA-Z0-9._]+$/'],
+            'name'                  => ['required', 'lowercase', 'string', 'min:4', 'unique:users',  'regex:/^[a-zA-Z0-9._]+$/'],
             'email'                 => 'required|lowercase|email|unique:users',
             'password'              => 'required|string|min:8',
-            'password_confirmation' => 'required_with:password|same:password|min:8'
+            'password_confirmation' => 'required_with:password|same:password',
+            'terms'                 => 'required|accepted',
+            'privacy_policy'        => 'required|accepted'
         ];
     }
 
@@ -55,7 +57,10 @@ class RegisterForm extends Component
             'password.min'                   => 'La contraseña debe tener al menos 8 caracteres.',
             'password_confirmation.required' => 'La contraseña de confirmación es requerido.',
             'password_confirmation.same'     => 'La contraseña de confirmación debe ser igual al password.',
-            'password_confirmation.min'      => 'La contraseña de confirmación debe tener al menos 8 caracteres.'
+            'terms.required'                 => 'Debes aceptar los términos y condiciones.',
+            'terms.accepted'                 => 'Debes aceptar los términos y condiciones.',
+            'privacy_policy.required'        => 'Debes aceptar la política de privacidad.',
+            'privacy_policy.accepted'        => 'Debes aceptar la política de privacidad.',
         ];
     }
 
@@ -72,7 +77,8 @@ class RegisterForm extends Component
             'password'              => $this->password,
             'password_confirmation' => $this->password_confirmation,
             'type_register'         => UserTypeRegisterEnum::FORM->value,
-            'terms'                 => true
+            'terms'                 => $this->terms == 'on',
+            'policy'               => $this->privacy_policy == 'on',
         ];
 
         $user = (new CreateNewUser)->create($input);
@@ -80,6 +86,7 @@ class RegisterForm extends Component
         Auth::login($user);
 
         $this->redirect('/');
+
     }
 
     public function render()

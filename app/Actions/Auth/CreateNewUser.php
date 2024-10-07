@@ -36,17 +36,21 @@ class CreateNewUser implements CreatesNewUsers
             'password'      => ['required', 'string', 'min:8', 'confirmed'],
             'type_register' => ['required', 'string', 'in:' . implode(',', $typesRegister)],
             'terms'         => ['required', 'boolean'],
+            'policy'        => ['required', 'boolean'],
         ])->validate();
+
+
 
         DB::beginTransaction();
 
         try {
             $user = User::create([
-                'name'          => $data['name'],
-                'email'         => $data['email'],
-                'type_register' => $data['type_register'],
-                'password'      => Hash::make($data['password']),
-                'acepted_terms' => $data['terms'],
+                'name'           => $data['name'],
+                'email'          => $data['email'],
+                'type_register'  => $data['type_register'],
+                'password'       => Hash::make($data['password']),
+                'acepted_terms'  => $data['terms'],
+                'acepted_policy' => $data['policy'],
             ]);
             DB::commit();
         } catch (\Exception $e) {

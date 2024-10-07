@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('profile_photo_path', 2048)->nullable();
             $table->string('type_register');
             $table->boolean('acepted_terms')->default(false);
+            $table->boolean('acepted_policy')->default(false);
             $table->timestamps();
         });
 
