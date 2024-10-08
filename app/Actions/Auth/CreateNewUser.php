@@ -39,8 +39,6 @@ class CreateNewUser implements CreatesNewUsers
             'policy'        => ['required', 'boolean'],
         ])->validate();
 
-
-
         DB::beginTransaction();
 
         try {

@@ -52,6 +52,34 @@
         {{-- <x-shared.footer /> --}}
     </div>
 
+    <div class="fixed lg:hidden bottom-20 right-5" x-data="{
+        openAuthModalLoginForm() {
+                $dispatch('ModalAuthForm.showLoginForm');
+                $openModal('registerFormModal');
+                this.showInfoNotification();
+            },
+            showInfoNotification() {
+                $wireui.notify({
+                    icon: 'error',
+                    title: 'Registrate para crear un evento',
+                    description: 'Debes estar registrado para poder crear un evento y empezar a ganar dinero.',
+                })
+            }
+    }">
+        @if (auth()->check())
+            <a href="{{ route('events.create') }}">
+                <x-mini-button rounded amber class="p-5 border !text-slate-950 border-slate-950">
+                    <x-icon name="plus" class="w-6 h-6" />
+                </x-mini-button>
+            </a>
+        @else
+            <x-mini-button x-on:click="openAuthModalLoginForm()" rounded amber
+                class="p-5 border !text-slate-950 border-slate-950">
+                <x-icon name="plus" class="w-6 h-6" />
+            </x-mini-button>
+        @endif
+    </div>
+
     @stack('modals')
 
     @livewireScripts

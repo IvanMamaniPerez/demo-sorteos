@@ -83,10 +83,9 @@ class RegisterForm extends Component
 
         $user = (new CreateNewUser)->create($input);
 
-        Auth::login($user);
+        Auth::attempt(['email' => $user->email, 'password' => $this->password]);
 
         $this->redirect('/');
-
     }
 
     public function render()

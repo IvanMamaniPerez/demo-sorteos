@@ -394,3 +394,103 @@
 2024-10-07 13:15:47,595 INFO success: queue_worker_email entered RUNNING state, process has stayed up for > than 5 seconds (startsecs)
 2024-10-07 21:32:54,752 INFO reaped unknown pid 41694 (terminated by SIGKILL)
 2024-10-07 21:32:54,752 INFO reaped unknown pid 41693 (terminated by SIGKILL)
+2024-10-08 00:57:08,375 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2024-10-08 00:57:08,376 INFO supervisord started with pid 1
+2024-10-08 00:57:09,380 INFO spawned: 'npm_run_dev' with pid 7
+2024-10-08 00:57:09,383 INFO spawned: 'artisan_migrate' with pid 8
+2024-10-08 00:57:09,385 INFO spawned: 'queue_worker_email' with pid 9
+2024-10-08 00:57:09,386 INFO spawned: 'composer' with pid 10
+2024-10-08 00:57:09,388 INFO spawned: 'nginx' with pid 11
+2024-10-08 00:57:09,389 INFO spawned: 'npm_install' with pid 12
+2024-10-08 00:57:09,391 INFO spawned: 'octane' with pid 13
+2024-10-08 00:57:09,497 INFO success: composer entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2024-10-08 00:57:09,497 INFO success: npm_install entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2024-10-08 00:57:09,576 WARN exited: artisan_migrate (exit status 0; not expected)
+2024-10-08 00:57:10,308 INFO exited: npm_install (exit status 0; expected)
+2024-10-08 00:57:11,311 INFO spawned: 'artisan_migrate' with pid 168
+2024-10-08 00:57:11,311 INFO success: nginx entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-10-08 00:57:11,311 INFO success: octane entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-10-08 00:57:11,488 WARN exited: artisan_migrate (exit status 0; not expected)
+2024-10-08 00:57:12,760 INFO exited: composer (exit status 0; expected)
+2024-10-08 00:57:13,764 INFO spawned: 'artisan_migrate' with pid 221
+2024-10-08 00:57:13,967 WARN exited: artisan_migrate (exit status 0; not expected)
+2024-10-08 00:57:14,968 INFO success: npm_run_dev entered RUNNING state, process has stayed up for > than 5 seconds (startsecs)
+2024-10-08 00:57:14,969 INFO success: queue_worker_email entered RUNNING state, process has stayed up for > than 5 seconds (startsecs)
+2024-10-08 00:57:16,971 INFO spawned: 'artisan_migrate' with pid 228
+2024-10-08 00:57:17,143 WARN exited: artisan_migrate (exit status 0; not expected)
+2024-10-08 00:57:18,144 INFO gave up: artisan_migrate entered FATAL state, too many start retries too quickly
+2024-10-08 03:33:09,024 WARN exited: queue_worker_email (terminated by SIGTERM; not expected)
+2024-10-08 03:33:09,024 INFO reaped unknown pid 14697 (terminated by SIGTERM)
+2024-10-08 03:33:09,025 INFO reaped unknown pid 4222 (terminated by SIGKILL)
+2024-10-08 03:33:09,025 INFO reaped unknown pid 4223 (terminated by SIGKILL)
+2024-10-08 03:33:09,025 INFO reaped unknown pid 4224 (terminated by SIGKILL)
+2024-10-08 03:33:09,025 INFO reaped unknown pid 4225 (terminated by SIGKILL)
+2024-10-08 03:33:09,025 INFO reaped unknown pid 4226 (terminated by SIGKILL)
+2024-10-08 03:33:09,025 INFO reaped unknown pid 4227 (terminated by SIGKILL)
+2024-10-08 03:33:09,025 INFO reaped unknown pid 4228 (terminated by SIGKILL)
+2024-10-08 03:33:09,025 INFO reaped unknown pid 4229 (terminated by SIGKILL)
+2024-10-08 03:33:09,025 INFO reaped unknown pid 4230 (terminated by SIGKILL)
+2024-10-08 03:33:09,025 INFO reaped unknown pid 4231 (terminated by SIGKILL)
+2024-10-08 03:33:09,025 INFO reaped unknown pid 4232 (terminated by SIGKILL)
+2024-10-08 03:33:09,025 INFO reaped unknown pid 4233 (terminated by SIGKILL)
+2024-10-08 03:33:09,025 INFO reaped unknown pid 4234 (terminated by SIGKILL)
+2024-10-08 03:33:09,025 INFO reaped unknown pid 4235 (terminated by SIGKILL)
+2024-10-08 03:33:09,025 INFO reaped unknown pid 4237 (terminated by SIGKILL)
+2024-10-08 03:33:09,025 INFO reaped unknown pid 4238 (terminated by SIGKILL)
+2024-10-08 03:33:09,025 INFO reaped unknown pid 4239 (terminated by SIGKILL)
+2024-10-08 03:33:09,025 INFO reaped unknown pid 4242 (terminated by SIGKILL)
+2024-10-08 03:33:09,025 INFO reaped unknown pid 4243 (terminated by SIGKILL)
+2024-10-08 03:33:09,025 INFO reaped unknown pid 4244 (terminated by SIGKILL)
+2024-10-08 03:33:09,025 INFO reaped unknown pid 4250 (terminated by SIGKILL)
+2024-10-08 03:33:09,025 INFO reaped unknown pid 4251 (terminated by SIGKILL)
+2024-10-08 03:33:09,025 INFO reaped unknown pid 4252 (terminated by SIGKILL)
+2024-10-08 03:33:09,026 INFO reaped unknown pid 4253 (terminated by SIGKILL)
+2024-10-08 03:33:09,026 INFO reaped unknown pid 4254 (terminated by SIGKILL)
+2024-10-08 03:33:09,026 INFO reaped unknown pid 4256 (terminated by SIGKILL)
+2024-10-08 03:33:09,026 INFO reaped unknown pid 4257 (terminated by SIGKILL)
+2024-10-08 03:33:09,026 INFO reaped unknown pid 4258 (terminated by SIGKILL)
+2024-10-08 03:33:09,026 INFO reaped unknown pid 4249 (terminated by SIGKILL)
+2024-10-08 03:33:09,026 INFO reaped unknown pid 4259 (terminated by SIGKILL)
+2024-10-08 03:33:09,026 WARN received SIGTERM indicating exit request
+2024-10-08 03:33:09,026 INFO waiting for npm_run_dev, nginx, octane to die
+2024-10-08 03:33:09,037 INFO stopped: octane (exit status 0)
+2024-10-08 03:33:09,037 INFO reaped unknown pid 4220 (terminated by SIGKILL)
+2024-10-08 03:33:09,037 INFO reaped unknown pid 4221 (terminated by SIGKILL)
+2024-10-08 03:33:09,037 INFO reaped unknown pid 4236 (terminated by SIGKILL)
+2024-10-08 03:33:09,037 INFO reaped unknown pid 4240 (terminated by SIGKILL)
+2024-10-08 03:33:09,037 INFO reaped unknown pid 4241 (terminated by SIGKILL)
+2024-10-08 03:33:09,037 INFO reaped unknown pid 4245 (terminated by SIGKILL)
+2024-10-08 03:33:09,037 INFO reaped unknown pid 4246 (terminated by SIGKILL)
+2024-10-08 03:33:09,037 INFO reaped unknown pid 4247 (terminated by SIGKILL)
+2024-10-08 03:33:09,037 INFO reaped unknown pid 4248 (terminated by SIGKILL)
+2024-10-08 03:33:09,037 INFO reaped unknown pid 4255 (terminated by SIGKILL)
+2024-10-08 03:33:09,037 INFO reaped unknown pid 95 (terminated by SIGKILL)
+2024-10-08 03:33:09,050 INFO exited: nginx (exit status 0; expected)
+2024-10-08 03:33:09,050 WARN received SIGTERM indicating exit request
+2024-10-08 03:33:09,099 INFO exited: npm_run_dev (exit status 0; expected)
+2024-10-08 03:33:09,099 INFO reaped unknown pid 160 (terminated by SIGTERM)
+2024-10-08 16:21:32,790 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2024-10-08 16:21:32,793 INFO supervisord started with pid 1
+2024-10-08 16:21:33,795 INFO spawned: 'npm_run_dev' with pid 7
+2024-10-08 16:21:33,796 INFO spawned: 'artisan_migrate' with pid 8
+2024-10-08 16:21:33,797 INFO spawned: 'queue_worker_email' with pid 9
+2024-10-08 16:21:33,797 INFO spawned: 'composer' with pid 10
+2024-10-08 16:21:33,798 INFO spawned: 'nginx' with pid 11
+2024-10-08 16:21:33,799 INFO spawned: 'npm_install' with pid 12
+2024-10-08 16:21:33,799 INFO spawned: 'octane' with pid 13
+2024-10-08 16:21:33,941 INFO success: composer entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2024-10-08 16:21:33,941 INFO success: npm_install entered RUNNING state, process has stayed up for > than 0 seconds (startsecs)
+2024-10-08 16:21:34,078 WARN exited: artisan_migrate (exit status 0; not expected)
+2024-10-08 16:21:35,037 INFO success: nginx entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-10-08 16:21:35,037 INFO success: octane entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-10-08 16:21:35,042 INFO exited: npm_install (exit status 0; expected)
+2024-10-08 16:21:36,044 INFO spawned: 'artisan_migrate' with pid 170
+2024-10-08 16:21:36,205 WARN exited: artisan_migrate (exit status 0; not expected)
+2024-10-08 16:21:37,040 INFO exited: composer (exit status 0; expected)
+2024-10-08 16:21:39,041 INFO success: npm_run_dev entered RUNNING state, process has stayed up for > than 5 seconds (startsecs)
+2024-10-08 16:21:39,042 INFO spawned: 'artisan_migrate' with pid 223
+2024-10-08 16:21:39,043 INFO success: queue_worker_email entered RUNNING state, process has stayed up for > than 5 seconds (startsecs)
+2024-10-08 16:21:39,227 WARN exited: artisan_migrate (exit status 0; not expected)
+2024-10-08 16:21:42,641 INFO spawned: 'artisan_migrate' with pid 230
+2024-10-08 16:21:42,828 WARN exited: artisan_migrate (exit status 0; not expected)
+2024-10-08 16:21:43,307 INFO gave up: artisan_migrate entered FATAL state, too many start retries too quickly

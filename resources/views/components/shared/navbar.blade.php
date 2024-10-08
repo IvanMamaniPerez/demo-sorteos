@@ -23,8 +23,10 @@
         <div
             class="hidden md:flex justify-end md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse gap-2 col-span-3 lg:col-span-2 py-2">
             @if (auth()->check())
-                <x-button amber label="Crear evento"
-                    class="text-slate-950 font-bold border-slate-950 border-2 hover:text-slate-950" />
+                <x-button amber class="hidden lg:flex !text-slate-950 !font-bold border-slate-950 !border-2 !hover:text-slate-950 me-4">
+                    <x-icon name="plus" solid class="w-5 h-5" />
+                    Crear evento
+                </x-button>
 
                 <x-shared.user-dropdown :user="auth()->user()" />
             @else
@@ -50,20 +52,20 @@
             <ul
                 class="flex flex-row justify-around lg:justify-center font-medium p-2 m-0 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse border-0 bg-white ">
                 <li>
-                    <a href="#"
+                    <a href="{{ route('events.explore') }}" wire:navigate
                         class="block py-2 px-3 p-0 text-slate-950 font-bold rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 flex gap-1">
                         <x-icon name="calendar-days" class="w-5 h-5" />
                         Eventos
                     </a>
                 </li>
                 <li>
-                    <a href="#"
+                    <a href="{{ route('events.explore.winners') }}" wire:navigate
                         class="block py-2 px-3 p-0 text-slate-950 font-bold rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 flex gap-1">
                         <x-icon name="trophy" class="w-5 h-5" />
                         Ganadores</a>
                 </li>
                 <li>
-                    <a href="#"
+                    <a href="{{ route('events.explore.guaranteed') }}" wire:navigate
                         class="block lg:hidden py-2 px-3 p-0 text-slate-950 font-bold rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 flex gap-1">
                         <x-icon name="star" solid class="w-5 h-5 text-amber-500" />
                         Aseguradas</a>
